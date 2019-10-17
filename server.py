@@ -9,40 +9,48 @@ __maintainer__  = "Carlos Mostek"
 __email__       = "carlosmostek@gmail.com"
 __status__      = "Development"
 
-
 from __init__ import *
 
 from auth.AuthService import AuthService
-
 from auth.GettingStartedView import GettingStartedView
 
 
-class HomeController(BaseWidget):
+class HomeController:
 	''' This is the base window '''
 	
 	def __init__(self):
-		super(HomeController,self).__init__('Home Controller')
 		self.auth = AuthService()
 
-		self._panel = ControlEmptyWidget()
-		self._closeButton = ControlButton('Close')
-		self._closeButton.value = self.__exitEvent
+		self._app = gz.App(title="Home Controller", width=460, height=300)
+		menubar = gz.MenuBar(self._app,
+				  toplevel=["File"],
+				  options=[
+					  [ ["Exit", self.__exitEvent] ]
+				  ])
 
-		self.formset = [
-			('', '', '_closeButton'),
-		 	('', '_panel', '')
-		]
+		# self._closeButton = ControlButton('Close')
+		# self._closeButton.value = self.__exitEvent
+		self._box = gz.Box(self._app)
 
-		self.set_margin(20)
+		# self.formset = [
+		# 	('', '', '_closeButton'),
+		#  	('', '_panel', '')
+		# ]
+
+		# self.set_margin(20)
 
 		if (self.auth.neverAuthenticated()):
-			self._panel.value = GettingStartedView(self)
+			self._view = GettingStartedView(self, self._box)
 		else:
 			self.warning('Dont know how to deal with ever authenticated')
 			# self._panel.value = LocalLogin(self)
+
+		self._app.display()
+		
 	
 	def changeView(self, view):
-		self._panel.value = view
+		# self._box. = view
+		pass
 
 	def __exitEvent(self):
 		self.close()
@@ -59,4 +67,4 @@ class HomeController(BaseWidget):
 ##################################################################################################################
 
 #Execute the application
-if __name__ == "__main__":	 pyforms.start_app( HomeController, geometry=(200, 200, 680, 520) )
+if __name__ == "__main__":	 HomeController()

@@ -1,4 +1,5 @@
-pyforms
+pyzero
 auth0-python
 pyqrcode
 pypng
+pygif

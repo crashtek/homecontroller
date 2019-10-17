@@ -10,10 +10,4 @@ __email__       = "carlosmostek@gmail.com"
 __status__      = "Development"
 
 
-from pyforms.basewidget import BaseWidget
-from pyforms.controls 	import ControlButton
-from pyforms.controls 	import ControlEmptyWidget
-from pyforms.controls 	import ControlImage
-from pyforms.controls	import ControlLabel
-from pyforms.controls 	import ControlText
-import pyforms
+import guizero as gz
