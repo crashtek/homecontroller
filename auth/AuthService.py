@@ -1,9 +1,9 @@
 import http.client
 import pyqrcode
 import json
-import cv2
+#import cv2
 import io
-import np
+#import np
 
 class AuthService:
 	# Inner Singleton class
@@ -30,8 +30,8 @@ class AuthService:
 			urlQrCode = pyqrcode.create(decodedData["verification_uri_complete"])
 			buffer = io.BytesIO()
 			urlQrCode.png(buffer, scale=5, quiet_zone=10)
-			numpyValue = np.fromstring(buffer.getvalue(), dtype=np.uint8)
-			return cv2.imdecode(numpyValue, cv2.IMREAD_UNCHANGED)
+			# numpyValue = np.fromstring(buffer.getvalue(), dtype=np.uint8)
+			# return cv2.imdecode(numpyValue, cv2.IMREAD_UNCHANGED)
 
 		def isAuthenticated(self):
 			return self.__user

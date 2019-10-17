@@ -1,4 +1,4 @@
-pyzero
+guizero
 auth0-python
 pyqrcode
 pypng
