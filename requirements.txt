@@ -3,3 +3,6 @@ auth0-python
 pyqrcode
 pypng
 pygif
+Pillow
+np
+numpy

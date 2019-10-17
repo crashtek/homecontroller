@@ -56,7 +56,6 @@ class HomeController:
 		self._view.addToBox(self._box)
 
 	def __exitEvent(self):
-		self.close()
 		exit()
 
 	def __dummyEvent(self):

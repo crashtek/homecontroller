@@ -3,7 +3,7 @@ import pyqrcode
 import json
 #import cv2
 import io
-from PIL import Image
+from PIL import Image, ImageTk
 import np
 
 class AuthService:
@@ -29,11 +29,13 @@ class AuthService:
 			decodedData = json.loads(data.decode("utf-8"))
 			print(decodedData)
 			urlQrCode = pyqrcode.create(decodedData["verification_uri_complete"])
-			buffer = io.BytesIO()
-			urlQrCode.png(buffer, scale=5, quiet_zone=10)
-			numpyValue = np.fromstring(buffer.getvalue(), dtype=np.uint8)
-			return Image.fromarray(a)
+			#buffer = io.BytesIO()
+			name='qr.png'
+			urlQrCode.png(name, scale=5, quiet_zone=10)
+			#numpyValue = np.fromstring(buffer.getvalue(), dtype=np.uint8)
+			#return ImageTk.PhotoImage(Image.fromarray(numpyValue))
 			# return cv2.imdecode(numpyValue, cv2.IMREAD_UNCHANGED)
+			return Image.open(name)
 
 		def isAuthenticated(self):
 			return self.__user

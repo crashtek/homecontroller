@@ -9,5 +9,5 @@ class WaitingForLogin:
 		self._qrCodeImage = self.auth.getCode()
 
 	def addToBox(self, box):
-		self._qrCode = qz.Picture(box, image=self._qrCodeImage)
+		self._qrCode = gz.Picture(box, image=self._qrCodeImage)
 		# TODO: Wait for login to happen, then redirect to logged in
