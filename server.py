@@ -40,17 +40,20 @@ class HomeController:
 		# self.set_margin(20)
 
 		if (self.auth.neverAuthenticated()):
-			self._view = GettingStartedView(self, self._box)
+			self._view = GettingStartedView(self)
 		else:
 			self.warning('Dont know how to deal with ever authenticated')
 			# self._panel.value = LocalLogin(self)
 
+		self._view.addToBox(self._box)
 		self._app.display()
 		
 	
 	def changeView(self, view):
-		# self._box. = view
-		pass
+		self._box.destroy()
+		self._box = gz.Box(self._app)
+		self._view = view
+		self._view.addToBox(self._box)
 
 	def __exitEvent(self):
 		self.close()
