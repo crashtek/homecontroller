@@ -28,16 +28,7 @@ class HomeController:
 					  [ ["Exit", self.__exitEvent] ]
 				  ])
 
-		# self._closeButton = ControlButton('Close')
-		# self._closeButton.value = self.__exitEvent
 		self._box = gz.Box(self._app)
-
-		# self.formset = [
-		# 	('', '', '_closeButton'),
-		#  	('', '_panel', '')
-		# ]
-
-		# self.set_margin(20)
 
 		if (self.auth.neverAuthenticated()):
 			self._view = GettingStartedView(self)

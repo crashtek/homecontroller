@@ -6,3 +6,5 @@ pygif
 Pillow
 np
 numpy
+pyjwt
+cryptography
