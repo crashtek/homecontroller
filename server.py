@@ -21,7 +21,7 @@ class HomeController:
 	def __init__(self):
 		self.auth = AuthService()
 
-		self._app = gz.App(title="Home Controller", width=460, height=300)
+		self._app = gz.App(title="Home Controller", width=480, height=250)
 		menubar = gz.MenuBar(self._app,
 				  toplevel=["File"],
 				  options=[

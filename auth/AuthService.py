@@ -33,7 +33,7 @@ class AuthService:
 			self._verificationResponse = decodedData
 			#buffer = io.BytesIO()
 			name='qr.png'
-			urlQrCode.png(name, scale=5, quiet_zone=10)
+			urlQrCode.png(name, scale=2, quiet_zone=2)
 			#numpyValue = np.fromstring(buffer.getvalue(), dtype=np.uint8)
 			#return ImageTk.PhotoImage(Image.fromarray(numpyValue))
 			# return cv2.imdecode(numpyValue, cv2.IMREAD_UNCHANGED)
