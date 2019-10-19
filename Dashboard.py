@@ -9,4 +9,4 @@ class Dashboard:
 	def addToBox(self, box):
 		user = self._auth.getUser()
 		print(str(user))
-		gz.Text(box, text="Welcome %s"%(str(user)))
+		gz.Text(box, text="Welcome %s %s"%(user['given_name'], user['family_name']))
