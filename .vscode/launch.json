@@ -15,7 +15,7 @@
 			"name": "Python: Server",
 			"type": "python",
 			"request": "launch",
-			"program": "server.py",
+			"program": "${file}",
 			"console": "integratedTerminal"
 		}
 	]

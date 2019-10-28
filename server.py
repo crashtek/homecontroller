@@ -30,11 +30,13 @@ class HomeController:
 
 		self._box = gz.Box(self._app)
 
-		if (self.auth.neverAuthenticated()):
-			self._view = GettingStartedView(self)
-		else:
-			self.warning('Dont know how to deal with ever authenticated')
-			# self._panel.value = LocalLogin(self)
+		self._view = GettingStartedView(self)
+		# Eventually we will want to let people log in locally with a PIN
+		# if (self.auth.neverAuthenticated()):
+		# 	self._view = GettingStartedView(self)
+		# else:
+		# 	self.warning('Dont know how to deal with ever authenticated')
+		# 	# self._panel.value = LocalLogin(self)
 
 		self._view.addToBox(self._box)
 		self._app.display()

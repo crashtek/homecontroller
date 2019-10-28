@@ -1,3 +1,6 @@
 .venv
 __pycache__
 qr.png
+.qr.deleteme.png
+.authdata
+auth/Configuration.py
