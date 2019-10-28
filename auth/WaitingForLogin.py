@@ -13,8 +13,10 @@ class WaitingForLogin:
 		self._box = box
 		textToDisplay="""
 To Log In:
-Either open a browser to %s and enter code %s, OR
-Scan this QR code with your phone and confirm that the page displays this code %s"""%(
+Either open a browser to %s AND
+enter code %s, OR
+Scan this QR code with your phone AND
+confirm that the page displays this code %s"""%(
 			self._authCodeData['verification_uri'], 
 			self._authCodeData['user_code'], 
 			self._authCodeData['user_code']
