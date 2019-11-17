@@ -13,30 +13,30 @@ from __init__ import *
 
 from auth.AuthService import AuthService
 from auth.GettingStartedView import GettingStartedView
-
+from Dashboard import Dashboard
 
 class HomeController:
 	''' This is the base window '''
 	
 	def __init__(self):
 		self.auth = AuthService()
+		self.width = 480
+		self.height = 250
 
-		self._app = gz.App(title="Home Controller", width=480, height=250)
+		self._app = gz.App(title="Home Controller", width=self.width, height=self.height)
 		menubar = gz.MenuBar(self._app,
 				  toplevel=["File"],
 				  options=[
 					  [ ["Exit", self.__exitEvent] ]
 				  ])
 
-		self._box = gz.Box(self._app)
+		self._box = gz.Box(self._app, width=self.width, height=self.height)
 
-		self._view = GettingStartedView(self)
 		# Eventually we will want to let people log in locally with a PIN
-		# if (self.auth.neverAuthenticated()):
-		# 	self._view = GettingStartedView(self)
-		# else:
-		# 	self.warning('Dont know how to deal with ever authenticated')
-		# 	# self._panel.value = LocalLogin(self)
+		if (not self.auth.isAuthenticated()):
+			self._view = GettingStartedView(self)
+		else:
+			self._view = Dashboard(self)
 
 		self._view.addToBox(self._box)
 		self._app.display()
@@ -44,9 +44,11 @@ class HomeController:
 	
 	def changeView(self, view):
 		self._box.destroy()
-		self._box = gz.Box(self._app)
+		self._box = gz.Box(self._app, width=self.width, height=self.height)
 		self._view = view
 		self._view.addToBox(self._box)
+		self._box.update()
+		self._app.update()
 
 	def __exitEvent(self):
 		exit()
