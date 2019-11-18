@@ -1,10 +1,10 @@
 from __init__ import *
 from auth.AuthService import AuthService
 from blinds.Room import getRooms, createRoom
+from home.HomeController import HomeController
 
 class Dashboard:
-	def __init__(self, mainWindow):
-		self._mainWindow = mainWindow
+	def __init__(self):
 		self._auth = AuthService()
 
 	def addCell(self, roomsTable, text, grid):
@@ -27,7 +27,7 @@ class Dashboard:
 			rowNum += 1
 			for room in rooms:
 				self.addCell(roomsTable, text=room.getName(), grid=[0,rowNum])
-				self.addCell(roomsTable, text='???', grid=[1,rowNum])
+				self.addCell(roomsTable, text=room.getNextSchedule().nextTime(), grid=[1,rowNum])
 				gz.PushButton(roomsTable, text='View', grid=[2, rowNum], command=room.view)
 				rowNum += 1
 		self.newRoomText = gz.TextBox(roomsTable, grid=[0, rowNum])
@@ -36,5 +36,5 @@ class Dashboard:
 	def addRoom(self):
 		name = self.newRoomText.value
 		room = createRoom(name)
-		self._mainWindow.changeView(Dashboard(self._mainWindow))
+		HomeController().changeView(Dashboard())
 

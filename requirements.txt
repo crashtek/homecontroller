@@ -5,3 +5,4 @@ pypng
 Pillow
 pyjwt
 cryptography
+pytz

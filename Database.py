@@ -23,12 +23,16 @@ class Database:
 					ipaddress TEXT, 
 					upcommand INT, 
 					downcommand INT,
+					stopcommand INT,
 					CONSTRAINT window_primary_key PRIMARY KEY (room_id, name)
 				)''')
+			#IF YOU NEED TO UPDATE SCHEMA: cursor.execute("DROP TABLE schedule")
+			#self.connection.commit()
 			if not self.checkIfTableExists('schedule'):
 				cursor.execute("""CREATE TABLE schedule(
 					room_id INT, 
 					schedule_order INT,
+					command TEXT,
 					startDoW INT,
 					endDoW INT,
 					hour INT,

@@ -1,11 +1,11 @@
 from __init__ import *
 
 from auth.AuthService import AuthService
-from Dashboard import Dashboard
+from home.Dashboard import Dashboard
+from home.HomeController import HomeController
 
 class WaitingForLogin:
-	def __init__(self, mainWindow):
-		self._mainWindow = mainWindow
+	def __init__(self):
 		self._auth = AuthService()
 		self._authCodeData = self._auth.getCode()
 
@@ -28,6 +28,6 @@ confirm that the page displays this code %s"""%(
 
 	def checkLogin(self):
 		if self._auth.checkLogin():
-			self._mainWindow.changeView(Dashboard(self._mainWindow))
+			HomeController().changeView(Dashboard())
 		else:
 			self._box.after(self._authCodeData['interval']*1000, self.checkLogin)
