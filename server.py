@@ -12,7 +12,7 @@ __status__      = "Development"
 from __init__ import *
 from auth.AuthService import AuthService
 from auth.GettingStartedView import GettingStartedView
-from blinds.Room import getRooms, ViewRoom
+from blinds.Room import getRooms, ViewSchedules
 from blinds.ScheduleClock import ScheduleClock
 from home.Dashboard import Dashboard
 from home.HomeController import HomeController
@@ -23,7 +23,7 @@ from home.HomeController import HomeController
 
 #Execute the application
 if __name__ == "__main__":	
-	ViewRoom.DashboardConstructor = Dashboard
+	ViewSchedules.DashboardConstructor = Dashboard
 	ScheduleClock(getRooms)
 	homeController = HomeController()
 	auth = AuthService()
