@@ -122,7 +122,8 @@ class AuthService:
 			self._validateToken(decodedData['id_token'])
 			self._user["accessToken"] = decodedData["access_token"]
 			self._user['expires_at'] = time.time() + decodedData['expires_in']
-			self._refreshToken = decodedData["refresh_token"]
+			if 'refresh_token' in decodedData:
+				self._refreshToken = decodedData["refresh_token"]
 			dataFile = open(self.dataStoreName, 'wb')
 			authData = pickle.dump({
 				'user': self._user,
